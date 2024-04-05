@@ -57,7 +57,7 @@ def transaction_page():
     tree.pack(fill="both", expand=True)
 
     # Create a button to go back
-    Button(width=20, pady=7, text="Submit", bg="#57a1f8", fg="white", border=0, command=back).place(x=800, y=450)
+    Button(width=15, pady=7, text="Submit", bg="#57a1f8", fg="white", border=0, command=back).place(x=800, y=450)
 
     
 
