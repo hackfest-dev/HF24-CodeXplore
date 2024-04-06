@@ -11,17 +11,17 @@ def addcard_page():
     window.resizable(False, False)
 
 #func for entering card number
-    def enter_cardno():
+    def enter_cardno(event):
         if cardno.get() == 'Card Number':#default text
             cardno.delete(0, "end") #clr def text
 
  #func to leave card no. when clicked for next, eg expiry no           
-    def leave_cardno():
+    def leave_cardno(event):
         if cardno.get() == '':
             cardno.insert(0, "Card Number") 
 
  #func for entering expiry date           
-    def enter_expdt():
+    def enter_expdt(event):
         if expdt.get() == 'Expiry Date':
             expdt.delete(0, "end")
 
