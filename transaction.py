@@ -1,28 +1,24 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-#from database import transaction  # Assuming transaction function is defined in database module
+from database import transaction
 
-def transaction_page():
-    # Function to go back to the home screen
+def transaction_page(login,home,loggedin_user):
     def back():
-        root.destroy()  # Close the current window
-        #home(login, loggedin_user)  # Call the home function to return to the home screen
-
-    # Function to load transaction data into the Treeview
-    # def load_data():
-    #     # Retrieve transaction data for the logged-in user
-    #     transactions = transaction(loggedin_user)
-    #     # Insert data into the Treeview
-    #     for data in transactions:
-    #         tree.insert("", tk.END, values=data)
+        root.destroy()
+        home(login,loggedin_user)
+    def load_data():
+        transactions = transaction(loggedin_user)
+        # Insert data into the treeview
+        for data in transactions:
+            tree.insert("", tk.END, values=data)
 
     # Create main window
     root = tk.Tk()
-    root.title("Transaction History")  # Set window title
-    root.geometry("925x500+300+200")  # Set window size and position
-    root.configure(bg="#fff")  # Set window background color
-    root.resizable(False, False)  # Disable window resizing
+    root.title("Transaction History")
+    root.geometry("925x500+300+200")
+    root.configure(bg="#fff")
+    root.resizable(False,False)
 
     # Create Treeview widget
     tree = ttk.Treeview(root, columns=("Date", "Phone", "Type", "Amount"), show="headings")
@@ -50,18 +46,11 @@ def transaction_page():
     tree.configure(yscrollcommand=scrollbar.set)
     scrollbar.pack(side="right", fill="y")
 
-    # Load data into the Treeview
-    #load_data()
+    # Load data into the treeview
+    load_data()
 
-    # Pack the Treeview
+    # Pack the treeview
     tree.pack(fill="both", expand=True)
-
-    # Create a button to go back
-    Button(width=15, pady=7, text="Submit", bg="#57a1f8", fg="white", border=0, command=back).place(x=800, y=450)
-
-    
-
+    Button(width=15,pady=7,text="Submit", bg="#57a1f8",fg="white",border=0,command=back).place(x=800,y=450)
     # Run the application
     root.mainloop()
-
-transaction_page()
