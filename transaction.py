@@ -30,7 +30,6 @@ def transaction_page():
     tree.column("Amount", width=100)
 
     # Set style
-
     style = ttk.Style()
     style.theme_use("clam")
     style.configure("Treeview", background="#f0f0f0", foreground="black")
